@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Cars</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        /* Keyframes for smooth continuous scrolling */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);  /* Start at normal position */
+            }
+            100% {
+                transform: translateX(-50%); /* Move left by 50% of container width */
+            }
+        }
+
+        /* Slider container */
+        .slider {
+            overflow: hidden;           /* Hide overflow to contain logos */
+            position: relative;          /* Set relative position for track */
+            width: 100%;                 /* Full width of the container */
+        }
+
+        /* Slider track for logos */
+        .slider-track {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 200%;                 /* Double the width for seamless loop */
+            animation: scroll 30s linear infinite;  /* Continuous animation */
+        }
+
+        /* Logos inside the track */
+        .slider-track img {
+            flex-shrink: 0;
+            height: 80px;                /* Adjust logo height */
+            margin-right: 20px;          /* Add spacing between logos */
+        }
+    </style>
+
+<!-- FLip cards  -->
+<style>
+    .perspective {
+      perspective: 1000px;
+    }
+    .transform-style {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+  </style>
+
+
+
+</head>
+<body>
+   <section class="bg-[url(images\bmw-m4-csl-mi-03.jpg)] h-auto bg-center bg-cover shadow-black ">
+    <div class="bg-slate-800 bg-opacity-55 font-sans flex">
+     
+        <nav class="text-white container max-w-[1200px] mx-auto backdrop-blur-sm flex justify-between h-[70px] items-center xl:px-0 px-7">
+        
+            <!-- Logo -->
+            <div class="flex w-14 h-5">
+                <img src="./images/image.png" alt="" width="200px" height="40px">
+            </div>
+            
+            <!-- Centered CAR.MAVRIK text -->
+            <div class="flex-grow text-center">
+                <a href="#" class="capitalize font-extrabold text-4xl cursor-default">Project Cars</a>
+            </div>
+            
+            <!-- Search Box at Right End -->
+            <div class="flex w-[200px] rounded-3xl bg-white justify-end">
+                <input type="Search" 
+                name="Search" id="Search" 
+                placeholder="Search" 
+                class="w-full bg-transparent border-none px-4 py-1 text-black outline-none">
+                <button class="m-2 w-7">
+                    <img src="./images/search.png" alt="">
+                </button>
+
+                <!-- Sidebar Toggle Icon -->
+                
+            </div>
+
+
+            
+            <span class=" absolute text-white text-4xl top-5  -left-28 cursor-pointer"  onclick="toggleSidebar()">
+                <i class="bi bi-filter-left px-2 bg-gray-900 rounded-md"></i>
+            </span> 
+        </nav>
+    </div>
+   
+    <!-- Sidebar -->
+    <div class="sidebar fixed top-0 bottom-0 left-[-300px] duration-500 p-5 w-[300px] overflow-y-auto text-center bg-gray-900 shadow h-screen z-20">
+        <div class="text-gray-100 text-xl">
+            <div class="p-2.5 mt-1 flex items-center rounded-md">
+                <i class="bi bi-app-indicator px-2 py-1 bg-blue-600 rounded-md"></i>
+                <h1 class="text-[15px] ml-10 text-xl text-gray-200 font-bold">Menu</h1>
+                <i class="bi bi-x ml-10 cursor-pointer" onclick="toggleSidebar()"></i>
+            </div>
+            <hr class="my-2 text-gray-600">
+
+            <!-- Menu Items -->
+            <div>
+                <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-700">
+                    <i class="bi bi-search text-sm"></i>
+                    <input class="text-[15px] ml-4 w-full bg-transparent focus:outline-none" placeholder="Search">
+                </div>
+    
+                <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
+                    <i class="bi bi-house-door-fill"></i>
+                    <span class="text-[15px] ml-4 text-gray-200">Home</span>
+                </div>
+                <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
+                    <i class="bi bi-bookmark-fill"></i>
+                    <span class="text-[15px] ml-4 text-gray-200">Bookmark</span>
+                </div>
+                <hr class="my-4 text-gray-600">
+                <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
+                    <i class="bi bi-envelope-fill"></i>
+                    <span class="text-[15px] ml-4 text-gray-200">Messages</span>
+                </div>
+    
+                <!-- Dropdown Menu -->
+                <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
+                    <i class="bi bi-chat-left-text-fill"></i>
+                    <div class="flex justify-between w-full items-center" onclick="toggleDropdown()">
+                        <span class="text-[15px] ml-4 text-gray-200">Chatbox</span>
+                        <span class="text-sm rotate-0" id="arrow">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Dropdown Submenu -->
+                <div class="leading-7 text-left text-sm font-thin mt-2 w-4/5 mx-auto hidden" id="submenu">
+                    <h1 class="cursor-pointer p-2 hover:bg-gray-700 rounded-md mt-1">Social</h1>
+                    <h1 class="cursor-pointer p-2 hover:bg-gray-700 rounded-md mt-1">Personal</h1>
+                    <h1 class="cursor-pointer p-2 hover:bg-gray-700 rounded-md mt-1">Friends</h1>
+                </div>
+
+                <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span class="text-[15px] ml-4 text-gray-200">Logout</span>
+                </div>
+            </div>
+        </div>
+    </div>   
+
+    <!-- Sidebar Toggle Script -->
+   
+    <!-- Main Content -->
+    <div class="bg-center bg-cover h-[600px] w-auto flex justify-center">
+        <h1 class="  w-[600px] ustify-center text-slate-800 text-5xl font-extrabold" >Welcome to Project Cars</h1>
+    </div>
+ 
+
+    <div class="absolute left-5 top-1/2 transform -translate-y-1/2 -z-5">
+        <h2 class="text-3xl md:text-2xl font-bold text-yellow-50 px-8 " >
+            "Racing is in our DNA."
+        </h2>
+        <h2 class="text-lg md:text-xl text-yellow-50 mt-4 -mx-36 font-bold">
+            <pre>
+                BMW Motorsport embodies precision, performance, 
+                passion for racing, both on and off the track.
+            </pre>
+           
+        </h2>
+    </div>    
+   </section>
+
+
+<section>
+    <div></div>
+</section>
+
+
+<div>
+    <div class="container mx-auto py-10">
+        <h1 class="text-3xl text-center font-bold mb-8">Discover the Best in Automotive Brands</h1>
+        <div class="slider">
+            <!-- Slider Track containing logos -->
+            <div class="slider-track">
+                <img src="./images/amg-removebg-preview.png" alt="Brand 1" class="h-20 w-auto mx-4">
+                <img src="./images/bugatti-logo.png" alt="Brand 2" class="h-20 w-auto mx-4">
+                <img src="./images/audi-removebg-preview.png" alt="Brand 3" class="h-20 w-auto mx-4">
+                <img src="./images/bmw.png" alt="Brand 4" class="h-20 w-auto mx-4">
+                <img src="./images/chev-removebg-preview.png" alt="Brand 5" class="h-20 w-auto mx-4">
+                <!-- Duplicate the logos for smooth infinite scrolling -->
+                <img src="./images/ford-removebg-preview.png" alt="Brand 1" class="h-20 w-auto mx-4">
+                <img src="./images/honda-removebg-preview.png" alt="Brand 2" class="h-20 w-auto mx-4">
+                <img src="./images/lexus-removebg-preview.png" alt="Brand 3" class="h-20 w-auto mx-4">
+                <img src="./images/maruti-removebg-preview.png" alt="Brand 4" class="h-20 w-auto mx-4">
+                <img src="./images/mini-removebg-preview.png" alt="Brand 5" class="h-20 w-auto mx-4">
+                <img src="./images/mitsu-removebg-preview.png" alt="Brand 5" class="h-20 w-auto mx-4">
+                <img src="./images/wolks-removebg-preview.png" alt="Brand 5" class="h-20 w-auto mx-4">
+                <img src="./images/mustang-removebg-preview.png" alt="Brand 5" class="h-20 w-auto mx-4">
+                <img src="./images/nissan-removebg-preview.png" alt="Brand 5" class="h-20 w-auto mx-4">
+                <img src="./images/subaru-removebg-preview.png" alt="Brand 5" class="h-20 w-auto mx-4">
+                <img src="./images/volvo-removebg-preview.png" alt="Brand 5" class="h-20 w-auto mx-4">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<section>
+    <div class="container mx-auto p-4 bg-slate-900 ">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Left side: Car Image -->
+            <div class="flex justify-center items-center">
+                <img src="./images/bmw m5.png" alt="Car Image" class="w-full h-auto rounded-lg shadow-lg">
+            </div>
+
+            <!-- Right side: Car Info Grid -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-gray-300 p-4 rounded-lg shadow-lg">
+                    <h2 class="text-lg font-semibold">Car Model</h2>
+                    <p>BMW M5</p>
+                </div>
+                <div class="bg-gray-300 p-4 rounded-lg shadow-lg">
+                    <h2 class="text-lg font-semibold">Price</h2>
+                    <p>Rs. 1.99 Cr*</p>
+                </div>
+                <div class="bg-gray-300  p-4 rounded-lg shadow-lg">
+                    <h2 class="text-lg font-semibold">Year</h2>
+                    <p>2024</p>
+                </div>
+                <div class="bg-gray-300  p-4 rounded-lg shadow-lg">
+                    <h2 class="text-lg font-semibold">Mileage</h2>
+                    <p>49.75 kmpl</p>
+                </div>
+                <div class="bg-gray-300  p-4 rounded-lg shadow-lg">
+                    <h2 class="text-lg font-semibold">Fuel Type</h2>
+                    <p>Petrol</p>
+                </div>
+                <div class="bg-gray-300  p-4 rounded-lg shadow-lg">
+                    <h2 class="text-lg font-semibold">Transmission</h2>
+                    <p>Automatic</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="container mx-auto p-4 bg-slate-900 ">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <div class="grid grid-cols-2 gap-6 p-6 bg-gRE">
+                <!-- Car Model -->
+                <div class="p-6 rounded-xl shadow-xl bg-gradient-to-r bg-gray-500 to-indigo-500 text-white hover:scale-105 transition-transform">
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10v2a2 2 0 002 2h3v-4H6a2 2 0 00-2 2v2m16-4v2a2 2 0 01-2 2h-3v-4h3a2 2 0 012 2v2"></path>
+                        </svg>
+                        <div>
+                            <h2 class="text-lg font-bold">Car Model</h2>
+                            <p>XEV 9</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Price -->
+                <div class="p-6 rounded-xl shadow-xl bg-gradient-to-r bg-gray-500 to-teal-400 text-white hover:scale-105 transition-transform">
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.104 0-2 .672-2 1.5S10.896 11 12 11c1.104 0 2-.672 2-1.5S13.104 8 12 8zm0 7.5c-1.104 0-2 .672-2 1.5s.896 1.5 2 1.5c1.104 0 2-.672 2-1.5s-.896-1.5-2-1.5z"></path>
+                        </svg>
+                        <div>
+                            <h2 class="text-lg font-bold">Price</h2>
+                            <p>Rs 21.90 Lakh</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Year -->
+                <div class="p-6 rounded-xl shadow-xl bg-gradient-to-r bg-gray-500 to-indigo-600 text-white hover:scale-105 transition-transform">
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12h2l-3 3m0-6l3 3h-2m-9 2h2l-3 3m0-6l3 3H5"></path>
+                        </svg>
+                        <div>
+                            <h2 class="text-lg font-bold">Year</h2>
+                            <p>2024</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mileage -->
+                <div class="p-6 rounded-xl shadow-xl bg-gradient-to-r bg-gray-500 to-red-500 text-white hover:scale-105 transition-transform">
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11h14M5 7h14M5 15h14"></path>
+                        </svg>
+                        <div>
+                            <h2 class="text-lg font-bold">Mileage</h2>
+                            <p>682 km</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fuel Type -->
+                <div class="p-6 rounded-xl shadow-xl bg-gradient-to-r bg-gray-500 to-orange-400 text-white hover:scale-105 transition-transform">
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18V9a4 4 0 114 0v9m6 0V9a4 4 0 114 0v9m0 0a4 4 0 01-4 4H6a4 4 0 01-4-4m10 0a4 4 0 014-4"></path>
+                        </svg>
+                        <div>
+                            <h2 class="text-lg font-bold">Fuel Type</h2>
+                            <p>Electric</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Transmission -->
+                <div class="p-6 rounded-xl shadow-xl bg-gradient-to-r bg-gray-500 to-red-400 text-white hover:scale-105 transition-transform">
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.933 0 3.5-1.567 3.5-3.5S13.933 4 12 4s-3.5 1.567-3.5 3.5S10.067 11 12 11zM12 15c-1.933 0-3.5 1.567-3.5 3.5S10.067 22 12 22s3.5-1.567 3.5-3.5S13.933 15 12 15z"></path>
+                        </svg>
+                        <div>
+                            <h2 class="text-lg font-bold">Transmission</h2>
+                            <p>Automatic</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+
+            <!-- Left side: Car Image -->
+            <div class="flex justify-center items-center">
+                <img src="https://www.rushlane.com/wp-content/uploads/2024/11/mahindra-xev-9e-official-photos-14.jpg" alt="Car Image" class="w-full h-auto rounded-lg shadow-lg">
+            </div>
+
+            <!-- Right side: Car Info Grid -->
+            
+        </div>
+    </div>
+</section>
+
+
+
+<div>
+      <!-- News Section -->
+      <div class="bg-gray-800 shadow-lg">
+        <h2 class="text-center text-2xl font-bold py-4 text-gray-50">Latest Automotive News</h2>
+        <div class="container mx-auto px-4">
+            <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- News items will be injected here -->
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<section class="py-12 bg-slate-900">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-8 text-white">Explore the World of Cars</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Flip Card -->
+        <div class="perspective">
+          <div class="relative w-full h-72 transform-style transition-transform duration-700 flip-card" onclick="flipCard(this)">
+            <!-- Front Side -->
+            <div class="absolute inset-0 bg-gray-800 p-6 rounded-lg shadow-lg backface-hidden">
+              <h3 class="text-xl font-semibold mb-4 text-gray-50">Sports Cars</h3>
+              <p class="text-gray-300">High-performance vehicles designed for speed and agility.</p>
+              <img src="images/bmw150.jpg" alt="Sports Cars" class="rounded-lg mt-4 h-40 w-56 ">
+            </div>
+            <!-- Back Side -->
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-800 to-cyan-400 p-6 rounded-lg shadow-lg backface-hidden rotate-y-180">
+              <h3 class="text-xl font-semibold mb-4">More About Sports Cars</h3>
+              <p class="text-gray-300">Known for their sleek designs and advanced aerodynamics.</p>
+              <button class="mt-4 bg-white text-blue-800 px-4 py-2 rounded-lg">Learn More</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add More Cards as Needed -->
+        <div class="perspective">
+          <div class="relative w-full h-72 transform-style transition-transform duration-700 flip-card" onclick="flipCard(this)">
+            <!-- Front Side -->
+            <div class="absolute inset-0 bg-gray-800 p-6 rounded-lg shadow-lg backface-hidden">
+              <h3 class="text-xl font-semibold mb-4 text-gray-50">Electric Cars</h3>
+              <p class="text-gray-300">Environmentally friendly vehicles powered by electricity.</p>
+              <img src="images/be6150.jpg" alt="Electric Cars" class="rounded-lg mt-4 h-40">
+            </div>
+            <!-- Back Side -->
+            <div class="absolute inset-0 bg-gradient-to-r from-green-800 to-lime-300 p-6 rounded-lg shadow-lg backface-hidden rotate-y-180">
+              <h3 class="text-xl font-semibold mb-4">More About Electric Cars</h3>
+              <p class="text-gray-300">Equipped with advanced batteries and smart technology.</p>
+              <button class="mt-4 bg-white text-green-800 px-4 py-2 rounded-lg">Learn More</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="perspective">
+            <div class="relative w-full h-72 transform-style transition-transform duration-700 flip-card" onclick="flipCard(this)">
+              <!-- Front Side -->
+              <div class="absolute inset-0 bg-gray-800 p-6 rounded-lg shadow-lg backface-hidden">
+                <h3 class="text-xl font-semibold mb-4 text-gray-50">SUV Cars</h3>
+                <p class="text-gray-300">Environmentally friendly vehicles powered by electricity.</p>
+                <img src="images/defender150.jpg" alt="Electric Cars" class="rounded-lg mt-4 w-64 h-40">
+              </div>
+              <!-- Back Side -->
+              <div class="absolute inset-0 bg-gradient-to-r from-black to-gray-400 p-6 rounded-lg shadow-lg backface-hidden rotate-y-180">
+                <h3 class="text-xl font-semibold mb-4">More About Electric Cars</h3>
+                <p class="text-gray-300">Equipped with advanced batteries and smart technology.</p>
+                <button class="mt-4 bg-white text-green-800 px-4 py-2 rounded-lg">Learn More</button>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+<section>
+
+    
+</section>
+
+
+   <script>
+     function flipCard(card) {
+      card.classList.toggle('rotate-y-180');
+    }
+
+    function toggleSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        if (sidebar.style.left === '-300px') {
+            sidebar.style.left = '0';
+        } else {
+            sidebar.style.left = '-300px';
+        }
+    }
+
+    function toggleDropdown() {
+        document.querySelector('#submenu').classList.toggle('hidden');
+        document.querySelector('#arrow').classList.toggle('rotate-180');
+    }
+
+
+   
+    const apiKey = 'b2a21599d96d48f08d87d17f4da65f82'; // Replace with your NewsAPI key
+    const apiUrl = `https://newsapi.org/v2/everything?q=automotive OR automobile OR cars OR vehicles AND India&language=en&sortBy=publishedAt&apiKey=${apiKey}`;
+
+        async function fetchNews() {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data.articles) {
+                    const newsContainer = document.getElementById('news-container');
+                    newsContainer.innerHTML = ''; // Clear previous content
+
+                    // Limit to 8 articles for demonstration
+                    const articles = data.articles.slice(0, 8);
+
+                    articles.forEach(article => {
+                        const newsItem = document.createElement('div');
+                        newsItem.className = 'flex bg-gray-700 rounded shadow-lg overflow-hidden hover:bg-gray-600 transition';
+
+                        // Article Image
+                        const newsImage = document.createElement('img');
+                        newsImage.src = article.urlToImage || 'https://via.placeholder.com/150';
+                        newsImage.alt = 'News Image';
+                        newsImage.className = 'w-32 h-32 object-cover';
+
+                        // Article Text
+                        const newsContent = document.createElement('div');
+                        newsContent.className = 'flex flex-col p-4 w-full';
+
+                        const newsTitle = document.createElement('a');
+                        newsTitle.href = article.url;
+                        newsTitle.target = '_blank';
+                        newsTitle.textContent = article.title;
+                        newsTitle.className = 'text-white font-semibold mb-2 hover:text-blue-400 truncate';
+
+                        const newsSource = document.createElement('span');
+                        newsSource.textContent = `Source: ${article.source.name}`;
+                        newsSource.className = 'text-gray-400 text-sm';
+
+                        const newsDescription = document.createElement('p');
+                        newsDescription.textContent = article.description || 'No description available.';
+                        newsDescription.className = 'text-gray-300 text-sm mt-1 line-clamp-3';
+
+                        newsContent.appendChild(newsTitle);
+                        newsContent.appendChild(newsSource);
+                        newsContent.appendChild(newsDescription);
+
+                        newsItem.appendChild(newsImage);
+                        newsItem.appendChild(newsContent);
+
+                        newsContainer.appendChild(newsItem);
+                    });
+                } else {
+                    console.error('No articles found');
+                }
+            } catch (error) {
+                console.error('Error fetching news:', error);
+            }
+        }
+
+        // Fetch news when the page loads
+        fetchNews();
+
+        // Refresh news every 5 minutes
+        setInterval(fetchNews, 300000);
+
+   
+</script>
+
+</body>
+</html>

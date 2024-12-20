@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car.Mavrik</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+   <section class="bg-[url(images/3007379.jpg)] h-auto bg-center bg-cover  ">
+    <div class="bg-slate-800 bg-opacity-55 font-sans flex ">
+     
+        <nav class=" text-white container max-w-[1200px] mx-auto backdrop-blur-sm flex justify-between h-[70px] items-center xl:px-0 px-7">
+        
+            <!-- Logo -->
+            <div class="flex w-14 h-5">
+                <img src="./images/image.png" alt="" width="200px" height="40px">
+            </div>
+            
+            <!-- Centered CAR.MAVRIK text -->
+            <div class="flex-grow text-center">
+                <a href="#" class="capitalize font-extrabold text-4xl cursor-default">AutoInject</a>
+            </div>
+            
+            <!-- Search Box at Right End -->
+            <div class="flex w-[200px] rounded-3xl bg-white justify-end">
+                <input type="Search" 
+                name="Search" id="Search" 
+                placeholder="Search" 
+                class="w-full bg-transparent border-none px-4 py-1 text-black outline-none">
+                <button class="m-2 w-7">
+                    <img src="./images/search.png" alt="">
+                </button>
+
+                <!-- Sidebar Toggle Icon -->
+                <span class="absolute text-white text-4xl top-5 left-8 cursor-pointer"  onclick="toggleSidebar()">
+                    <i class="bi bi-filter-left px-2 bg-gray-900 rounded-md"></i>
+                </span> 
+
+                <!-- Sidebar -->
+                <div class="sidebar fixed top-0 bottom-0 left-[-475px] duration-500 p-5 w-[300px] overflow-y-auto text-center bg-gray-900 shadow h-screen">
+                    <div class="text-gray-100 text-xl">
+                        <div class="p-2.5 mt-1 flex items-center rounded-md">
+                            <i class="bi bi-app-indicator px-2 py-1 bg-blue-600 rounded-md"></i>
+                            <h1 class="text-[15px] ml-10 text-xl text-gray-200 font-bold">Menu</h1>
+                            <i class="bi bi-x ml-10 cursor-pointer" onclick="toggleSidebar()"></i>
+                        </div>
+                        <hr class="my-2 text-gray-600">
+
+                        <!-- Menu Items -->
+                        <div>
+                            <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-700">
+                                <i class="bi bi-search text-sm"></i>
+                                <input class="text-[15px] ml-4 w-full bg-transparent focus:outline-none" placeholder="Search">
+                            </div>
+                
+                            <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
+                                <i class="bi bi-house-door-fill"></i>
+                                <span class="text-[15px] ml-4 text-gray-200">Home</span>
+                            </div>
+                            <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
+                                <i class="bi bi-bookmark-fill"></i>
+                                <span class="text-[15px] ml-4 text-gray-200">Bookmark</span>
+                            </div>
+                            <hr class="my-4 text-gray-600">
+                            <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
+                                <i class="bi bi-envelope-fill"></i>
+                                <span class="text-[15px] ml-4 text-gray-200">Messages</span>
+                            </div>
+                
+                            <!-- Dropdown Menu -->
+                            <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
+                                <i class="bi bi-chat-left-text-fill"></i>
+                                <div class="flex justify-between w-full items-center" onclick="toggleDropdown()">
+                                    <span class="text-[15px] ml-4 text-gray-200">Chatbox</span>
+                                    <span class="text-sm rotate-0" id="arrow">
+                                        <i class="bi bi-chevron-down"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Dropdown Submenu -->
+                            <div class="leading-7 text-left text-sm font-thin mt-2 w-4/5 mx-auto hidden" id="submenu">
+                                <h1 class="cursor-pointer p-2 hover:bg-gray-700 rounded-md mt-1">Social</h1>
+                                <h1 class="cursor-pointer p-2 hover:bg-gray-700 rounded-md mt-1">Personal</h1>
+                                <h1 class="cursor-pointer p-2 hover:bg-gray-700 rounded-md mt-1">Friends</h1>
+                            </div>
+
+                            <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
+                                <i class="bi bi-box-arrow-in-right"></i>
+                                <span class="text-[15px] ml-4 text-gray-200">Logout</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Toggle Script -->
+                <script>
+                    function toggleSidebar() {
+                        const sidebar = document.querySelector('.sidebar');
+                        if (sidebar.classList.contains('left-[-475x]')) {
+                            sidebar.classList.remove('left-[-475px]');
+                            sidebar.classList.add('left-0');
+                        } else {
+                            sidebar.classList.remove('left-0');
+                            sidebar.classList.add('left-[-475px]');
+                        }
+                    }
+
+                    function toggleDropdown() {
+                        document.querySelector('#submenu').classList.toggle('hidden');
+                        document.querySelector('#arrow').classList.toggle('rotate-180');
+                    }
+                </script>
+            </div>
+        </nav>
+    </div>
+    
+
+    <div 
+        class=" bg-center bg-cover h-[600px]  w-auto flex justify-center z-10">
+            <h1 class="text-white font-semibold shadow-md w-[400px] text-2xl justify-center">Welcome to Auto Inject</h1>
+        </div>
+
+   </section>
+   
+    <!-- Section 1 -->
+
+
+    
+   
+  
+</body>
+</html>
